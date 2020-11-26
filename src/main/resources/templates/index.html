@@ -1,0 +1,36 @@
+<!DOCTYPE HTML>
+<html xmlns:layout="http://www.w3.org/1999/xhtml" xmlns:th="http://www.springframework.org/schema/data/jaxb"
+      xmlns:sec="http://www.w3.org/1999/xhtml"
+      layout:decorate="~{main_layout}">
+<body>
+
+<div layout:fragment="content" class="container" >
+
+    <table table class="table table-striped">
+        <thead>
+        <tr>
+            <th>ID</th>
+            <th>Book Name</th>
+            <th>Author</th>
+            <th>Purchase Date</th>
+            <th>Action</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="book: ${books}">
+            <td ><p th:text="${book.id}"></p></td>
+            <td ><p th:text="${book.bookName}"></p></td>
+            <td ><p th:text="${book.author}"></p></td>
+            <td ><p th:text="${book.purchase_date}"></p></td>
+            <td>
+                <a th:href="@{'/editBook/' + ${book.id}}" class="btn btn-warning btn-lg"><span class="glyphicon glyphicon-pencil"></span> Edit</a> &nbsp
+                <a th:href="@{'/deleteBook/' + ${book.id}}" class="btn btn-danger btn-lg"><span class="glyphicon glyphicon-trash"></span> Delete</a>
+            </td>
+        </tr>
+        </tbody>
+    </table>
+
+</div>
+
+</body>
+</html>
